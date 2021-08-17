@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onionfiles url</title>
+</head>
+<body>
+<header>
+  <h1>onionfiles url</h1>
+</header>
+<main>
+    <div>
+        <ol type="1">
+            <li>
+                Do not share the password to this site with anyone.  Only share the onion link.
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=6czcc1gZ7Ak" target="_blank">Learn about the tor browser</a>
+            </li>
+            <li>
+                <a href="https://www.torproject.org/download/" target="_blank">Download and install the tor browser.</a>
+            </li>
+            <li>
+                Open this link using the tor browser: <a href="{{ .url }}" target="_blank">{{ .url }}</a>
+            </li>
+            <li>
+                If the server restarts the onion link will no longer be valid and you will have to return to this page
+                for a new one. The old onion link will present a 404 not found error.
+            </li>
+        </ol>
+    </div>
+</main>
+
+</body>
+</html>
