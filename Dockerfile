@@ -9,13 +9,18 @@ COPY go.mod ./
 COPY go.sum ./
 
 RUN go mod download
-RUN go mod verify
+# This is a workaround for the long build times libtor has
+# build all of the vendor dependencies before moving on to the code
+# this way if we have to rebuild the code, the vendor dependencies don't have to be rebuilt
+# See https://www.reddit.com/r/golang/comments/hj4n44/improved_docker_go_module_dependency_cache_for/
+RUN go list -m all | tail -n +2 | cut -f 1 -d " " | awk 'NF{print $0 "/..."}' | GOOS=linux xargs -n1 go build -v -installsuffix cgo -i; echo done
 
 COPY *.go ./
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /onionfiles
 
 COPY static/*.html ./static/
 COPY templates/*.html ./templates/
+RUN mkdir ./keys
 RUN mkdir ./static/files
 RUN touch ./static/files/.empty
 
