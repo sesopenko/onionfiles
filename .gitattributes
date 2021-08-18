@@ -10,3 +10,5 @@ go.mod text eol=lf
 *.conf text
 
 *.png binary
+
+Dockerfile text eol=lf

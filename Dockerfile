@@ -19,11 +19,10 @@ COPY *.go ./
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /onionfiles
 
 COPY static/*.html ./static/
-COPY templates/*.html ./templates/
 RUN mkdir ./keys
-RUN mkdir ./static/files
+RUN mkdir -p ./static/files
 RUN touch ./static/files/.empty
-
+COPY static/*.html ./static/
 
 EXPOSE 8080
 
