@@ -17,5 +17,5 @@ make build
 ## Running
 
 ```bash
-docker run --read-noly -v /path/to/files:/app/static/files/ sesopenko/onionfiles
+docker run --read-noly -v /path/to/files:/app/static/files/ -v /path/to/keys:/app/keys/ sesopenko/onionfiles
 ```
